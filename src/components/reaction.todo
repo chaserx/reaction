@@ -1,0 +1,6 @@
+- button to start the test
+- 3 second count down
+- random delay (maybe upto 10sec) of when to switch colors
+- timer starts after changing from red to green
+- register page clicks after timer starts
+- click anywhere stops timer and displays result
