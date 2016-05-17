@@ -29456,6 +29456,7 @@ var SwitchBox = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SwitchBox).call(this));
 
     _this.state = {
+      hasStarted: false,
       isComplete: false,
       hasClicked: false
     };
@@ -29517,19 +29518,23 @@ var SwitchBox = function (_React$Component) {
         }
       } else {
         boxDiv = _react2.default.createElement('div', { className: 'greenBox' });
-        actionButton = _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'p',
+        if (this.state.hasStarted) {
+          actionButton = _react2.default.createElement('div', null);
+        } else {
+          actionButton = _react2.default.createElement(
+            'div',
             null,
             _react2.default.createElement(
-              'button',
-              { onClick: this._finish.bind(this) },
-              'GO!'
+              'p',
+              null,
+              _react2.default.createElement(
+                'button',
+                { onClick: this._timeout.bind(this) },
+                'GO!'
+              )
             )
-          )
-        );
+          );
+        }
       }
 
       return _react2.default.createElement(
@@ -29566,16 +29571,25 @@ var SwitchBox = function (_React$Component) {
       this.startTime = null;
       this.stopTime = null;
       this.setState({
-        hasClicked: false
-      });
-      this.setState({
-        isComplete: false
+        hasClicked: false,
+        isComplete: false,
+        hasStarted: false
       });
     }
   }, {
     key: '_timeout',
     value: function _timeout() {
+      var _this2 = this;
+
       // maybe have some random timeout between green and red states
+      this.setState({
+        hasStarted: true
+      });
+      var rand = Math.round(Math.random() * (3000 - 500)) + 500;
+      setTimeout(function () {
+        console.log("Wait for it...");
+        _this2._finish();
+      }, rand);
     }
   }, {
     key: '_countdown',
