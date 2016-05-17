@@ -1,6 +1,6 @@
-- button to start the test
++- button to start the test
 - 10 second countdown?
 - random delay (maybe upto 10sec) of when to switch colors
-- timer starts after changing from red to green
-- register element clicks after timer starts
-- click on stops timer and displays result
++- timer starts after changing from red to green
++- register element clicks after timer starts
++- click on stops timer and displays result
