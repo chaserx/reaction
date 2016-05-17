@@ -83,7 +83,7 @@ export default class SwitchBox extends React.Component {
     this.setState({
       hasStarted: true
     })
-    let rand = Math.round(Math.random() * (3000 - 500)) + 500;
+    const rand = Math.round(Math.random() * (3000 - 500)) + 500;
     setTimeout(() => {
       console.log("Wait for it...");
       this._finish();
