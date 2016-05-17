@@ -1,3 +1,23 @@
+.center {
+  text-align: center;
+}
+
+#switch-box {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.checked {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 2em;
+}
+
+.results {
+  width: 100px;
+  margin: 0 auto;
+}
+
 .greenBox {
   width: 100px;
   height: 100px;
