@@ -6,9 +6,6 @@ import SwitchBox from './components/switch-box'
 jQuery(function() {
   ReactDOM.render(
     <SwitchBox />,
-    document.getElementById('switch-box'),
-    function() {
-      console.timeEnd('react-app')
-    }
+    document.getElementById('switch-box')
   );
 })
