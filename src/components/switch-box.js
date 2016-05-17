@@ -5,6 +5,7 @@ export default class SwitchBox extends React.Component {
     super();
 
     this.state = {
+      hasStarted: false,
       isComplete: false,
       hasClicked: false
     };
@@ -23,7 +24,7 @@ export default class SwitchBox extends React.Component {
     let actionButton = <div></div>
 
     if (this.state.isComplete) {
-      if  (this.state.hasClicked) {
+      if (this.state.hasClicked) {
         boxDiv = <div className='redBox'><p className='checked'>&#x2713;</p></div>;
         resultsDiv = <div className='results'><p>{this._latency()} ms</p></div>
         actionButton = <div><p><button onClick={this._reset.bind(this)}>TRY AGAIN!</button></p></div>
@@ -34,7 +35,11 @@ export default class SwitchBox extends React.Component {
       }
     } else {
       boxDiv = <div className='greenBox'></div>;
-      actionButton = <div><p><button onClick={this._finish.bind(this)}>GO!</button></p></div>
+      if (this.state.hasStarted) {
+        actionButton = <div></div>
+      } else {
+        actionButton = <div><p><button onClick={this._timeout.bind(this)}>GO!</button></p></div>
+      }
     }
 
     return(
@@ -67,15 +72,22 @@ export default class SwitchBox extends React.Component {
     this.startTime = null;
     this.stopTime = null;
     this.setState({
-      hasClicked: false
-    });
-    this.setState({
-      isComplete: false
+      hasClicked: false,
+      isComplete: false,
+      hasStarted: false
     });
   }
 
   _timeout() {
     // maybe have some random timeout between green and red states
+    this.setState({
+      hasStarted: true
+    })
+    let rand = Math.round(Math.random() * (3000 - 500)) + 500;
+    setTimeout(() => {
+      console.log("Wait for it...");
+      this._finish();
+    }, rand);
   }
 
   _countdown() {
