@@ -57,3 +57,8 @@ gulp.task('watch', ['serve'], () => {
   gulp.watch('public/assets/style.css', sync.reload)
   gulp.watch('public/index.html', sync.reload)
 })
+
+gulp.task('demo', ['transpile'], () => {
+  gulp.src(['public/**/*'])
+    .pipe(gulp.dest('demo'));
+})
